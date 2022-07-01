@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div id="canvas_div_pdf">
+
+    <!--Add HTML content you want to convert to PDF-->
+    <p>hello this is a paragraph</p>
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John</td>
+                <td>Doe</td>
+                <td>john@example.com</td>
+            </tr>
+            <tr>
+                <td>Mary</td>
+                <td>Moe</td>
+                <td>mary@example.com</td>
+            </tr>
+            <tr>
+                <td>July</td>
+                <td>Dooley</td>
+                <td>july@example.com</td>
+            </tr>
+        </tbody>
+    </table>
+    <img src="romance.jpg" class="img-thumbnail mx-auto d-block" alt="Cinque Terre">
+
+</div>
+<button>test</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js"></script>
+<script>
+    const button = document.querySelector('button')
+    button.addEventListener('click', () => {
+        var element = document.getElementById('canvas_div_pdf');
+        html2pdf(element, {
+            margin: 10,
+            filename: 'romance.pdf',
+            image: {
+                type: 'jpeg',
+                quality: 0.98
+            },
+            html2canvas: {
+                scale: 2,
+                logging: true,
+                dpi: 192,
+                letterRendering: true
+            },
+            jsPDF: {
+                unit: 'mm',
+                format: 'a4',
+                orientation: 'portrait'
+            }
+        });
+    })
+</script>
